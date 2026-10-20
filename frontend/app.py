@@ -60,6 +60,32 @@ st.markdown("""
         color: #f4f7ff;
     }
 
+    /* Keep text typed into sidebar fields dark and readable.
+       The sidebar's global white-text rule must not affect inputs. */
+    [data-testid="stSidebar"] input,
+    [data-testid="stSidebar"] textarea,
+    [data-testid="stSidebar"] [data-baseweb="input"] input,
+    [data-testid="stSidebar"] [data-baseweb="textarea"] textarea {
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+        background-color: #ffffff !important;
+        caret-color: #111827 !important;
+    }
+
+    [data-testid="stSidebar"] input::placeholder,
+    [data-testid="stSidebar"] textarea::placeholder {
+        color: #6b7280 !important;
+        -webkit-text-fill-color: #6b7280 !important;
+        opacity: 1;
+    }
+
+    /* Main-page text fields should also remain readable. */
+    [data-testid="stAppViewContainer"] input,
+    [data-testid="stAppViewContainer"] textarea {
+        color: #111827;
+        caret-color: #111827;
+    }
+
     [data-testid="stSidebar"] [data-testid="stRadio"] label {
         border-radius: 10px;
     }
