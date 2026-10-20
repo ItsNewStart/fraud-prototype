@@ -248,18 +248,95 @@ st.markdown("""
         font-size: 15px;
     }
 
-    div.stButton > button {
+    /* High-contrast buttons: readable before hover on every theme/device. */
+    div.stButton > button,
+    div.stFormSubmitButton > button {
+        background: #1d4ed8 !important;
+        color: #ffffff !important;
+        border: 1px solid #1d4ed8 !important;
         border-radius: 10px;
-        font-weight: 600;
-        min-height: 42px;
-        border: 1px solid #d7e2f3;
-        transition: all 0.2s ease;
+        font-weight: 700;
+        min-height: 44px;
+        padding: 0.55rem 1rem;
+        transition: background-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    div.stButton > button:hover {
-        border-color: #527bff;
-        color: #315de9;
-        box-shadow: 0 3px 10px rgba(55, 100, 220, 0.12);
+    div.stButton > button p,
+    div.stFormSubmitButton > button p,
+    div.stButton > button span,
+    div.stFormSubmitButton > button span {
+        color: #ffffff !important;
+    }
+
+    div.stButton > button:hover,
+    div.stFormSubmitButton > button:hover {
+        background: #173ea8 !important;
+        color: #ffffff !important;
+        border-color: #173ea8 !important;
+        box-shadow: 0 3px 10px rgba(29, 78, 216, 0.22);
+    }
+
+    div.stButton > button:focus,
+    div.stFormSubmitButton > button:focus {
+        outline: 3px solid rgba(59, 130, 246, 0.35);
+        outline-offset: 2px;
+    }
+
+    /* Keep the app comfortable on phones and narrow tablet screens. */
+    @media (max-width: 768px) {
+        [data-testid="stMainBlockContainer"] {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            padding-top: 1rem !important;
+        }
+
+        .hero {
+            padding: 20px 18px;
+            border-radius: 14px;
+        }
+
+        .hero-subtitle,
+        .hero-note {
+            overflow-wrap: anywhere;
+        }
+
+        .metric-card,
+        .panel,
+        .action-card {
+            padding: 14px;
+            min-width: 0;
+        }
+
+        /* Stack Streamlit columns instead of squeezing them on small screens. */
+        [data-testid="stHorizontalBlock"] {
+            flex-wrap: wrap !important;
+            gap: 0.75rem !important;
+        }
+
+        [data-testid="stHorizontalBlock"] > [data-testid="column"] {
+            flex: 1 1 100% !important;
+            min-width: 100% !important;
+            width: 100% !important;
+        }
+
+        div.stButton > button,
+        div.stFormSubmitButton > button {
+            width: 100%;
+            min-height: 46px;
+        }
+
+        [data-testid="stDataFrame"],
+        [data-testid="stTable"] {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+        [data-testid="stMainBlockContainer"] {
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+        }
     }
 
     div[data-testid="stMetric"] {
